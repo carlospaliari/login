@@ -1,0 +1,13 @@
+{
+    "name": "Daniel/testedfl",
+    "version": "0.1.0",
+    "require": {
+        "doctrine/orm": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "entity-files/"
+        }
+    }
+}
+
