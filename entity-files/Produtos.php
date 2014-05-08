@@ -44,4 +44,4 @@ class Produtos extends AbstractModel
      */
     private $grupo;
 
-}   
+}
