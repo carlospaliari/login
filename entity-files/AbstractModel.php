@@ -10,22 +10,24 @@ class AbstractModel
      *
      * @param null $data
      */
-        public function __construct($data = null)
-        {
-            if (null !== $data) {
-                foreach ($data as $k => $v) {
-                    if (substr($k, -3) == '_id') {
-                        $table  = ucfirst(substr($k, 0, -3)) . 's';
-                        $method = "set$table";
-                        $this->{$method}($table::find($v));
-                    }
-                    $this->{$k} = $v;
+    public function __construct($data = null)
+    {
+        if (null !== $data) {
+            foreach ($data as $k => $v) {
+                if (substr($k, -3) == '_id') {
+                    $table  = ucfirst(substr($k, 0, -3)) . 's';
+                    $method = "set$table";
+                    $this->{$method}($table::find($v));
                 }
+                $this->{$k} = $v;
             }
         }
+        $this->init();
+    }
 
-     /**
+    public function init(){}
 
+    /**
      * Busca um registro na tabela tendo como base o parâmetro id
      *
      * @param $id
@@ -41,8 +43,8 @@ class AbstractModel
         return EM::instance()->find(get_called_class(), $id);
     }
 
-     /**
-     *  Salva a instância do objeto
+    /**
+     * Salva a instância do objeto
      */
     public function save()
     {
@@ -50,18 +52,18 @@ class AbstractModel
         EM::instance()->flush($this);
     }
 
+
     /**
      * Salva a instância do objeto
      */
     public function refresh()
-     {
-         EM::instance()->refresh($this);
-     }
+    {
+        EM::instance()->refresh($this);
+    }
 
-
-     /**
-    * Apaga o registro do objeto instanciado
-    */
+    /**
+     * Apaga o registro do objeto instanciado
+     */
     public function delete()
     {
         EM::instance()->remove($this);
@@ -73,22 +75,23 @@ class AbstractModel
      * @return array
      */
     public function toArray()
-     {
-         $data = array();
-         foreach ($this as $k => $v) {
-             $data[$k] = $v;
-         }
+    {
+        $data = array();
+        foreach ($this as $k => $v) {
+            $data[$k] = $v;
+        }
         return $data;
-     }
+    }
+
     /**
      * Retorna uma string imprimível com o nome da tabela e os dados do registro.
      * @return string
      */
     public function __toString()
-     {
-         $lista = get_called_class().':: ';
-         $lista .= var_export($this->toArray(), true);
+    {
+        $lista = get_called_class().':: ';
+        $lista .= var_export($this->toArray(), true);
 
-         return $lista;
-     }
+        return $lista;
+    }
 }
