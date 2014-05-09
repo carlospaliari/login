@@ -2,6 +2,9 @@
 
 /**
  * Class Fornecedores
+ *
+ * @Entity
+ * @Table(name="fornecedores")
  */
 class Fornecedores extends AbstractModel
 {
@@ -24,35 +27,35 @@ class Fornecedores extends AbstractModel
      * @param int $id
      */
     public function setId($id)
-     {
-         $this->id = $id;
-     }
+    {
+        $this->id = $id;
+    }
 
     /**
      * Obtém o valor da propriedade id
      * @return int
      */
     public function getId()
-     {
-            return $this->id;
-     }
+    {
+        return $this->id;
+    }
 
-     /**
-      * Atribui valor para a propriedade nomraz
-      * @param string $nomraz
-      */
-     public function setNomraz($nomraz)
-     {
-            $this->nomraz = $nomraz;
-        }
+    /**
+     * Atribui valor para a propriedade nomraz
+     * @param string $nomraz
+     */
+    public function setNomraz($nomraz)
+    {
+        $this->nomraz = $nomraz;
+    }
 
-     /**
-      * Obtém o valor da propriedade nomraz
-      * @return string
-      */
-     public function getNomraz()
-     {
-            return $this->nomraz;
-     }
+    /**
+     * Obtém o valor da propriedade nomraz
+     * @return string
+     */
+    public function getNomraz()
+    {
+        return $this->nomraz;
+    }
 
-}
+} 
