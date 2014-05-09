@@ -1,5 +1,7 @@
 <?php
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Class Grupos
  *
@@ -29,60 +31,78 @@ class Grupos extends AbstractModel
     protected $descricao;
 
     /**
-    * Atribui valor para a coluna id
-    *
-    * @param int $id
-    */
+     * @OneToMany(targetEntity="Produtos", mappedBy="grupo")
+     **/
+    private $produtos;
+
+    public function init()
+    {
+        $this->produtos = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProdutos()
+    {
+        return $this->produtos;
+    }
+
+    /**
+     * Atribui valor para a coluna id
+     *
+     * @param int $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
 
     /**
-    * Obtém a coluna id
-    *
-    * @return int
-    */
+     * Obtém a coluna id
+     *
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-    * Atribui valor para a coluna datcad
+     * Atribui valor para a coluna datcad
      *
-    * @param DateTime $datcad
-    */
+     * @param DateTime $datcad
+     */
     public function setDatcad($datcad)
     {
         $this->datcad = $datcad;
     }
 
     /**
-    * Obtém a coluna datcad
-    *
-    * @return DateTime
-    */
+     * Obtém a coluna datcad
+     *
+     * @return DateTime
+     */
     public function getDatcad()
     {
         return $this->datcad;
     }
 
     /**
-    * Atribui valor para a coluna descrição
-    *
-    * @param string $descricao
-    */
+     * Atribui valor para a coluna descrição
+     *
+     * @param string $descricao
+     */
     public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
     }
 
     /**
-    * Obtém a coluna descricao
-    *
-    * @return string
-    */
+     * Obtém a coluna descricao
+     *
+     * @return string
+     */
     public function getDescricao()
     {
         return $this->descricao;
@@ -95,10 +115,9 @@ class Grupos extends AbstractModel
      *
      * @return Grupos
      */
-     public static function find($id)
-     {
-         return parent::find($id);
-     }
-
+    public static function find($id)
+    {
+        return parent::find($id);
+    }
 
 }
