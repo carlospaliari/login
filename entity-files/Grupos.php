@@ -87,8 +87,10 @@ class Grupos extends AbstractModel
     {
         return $this->descricao;
     }
+
     /**
      * Retorna uma instancia do Grupo
+     *
      * @param int $id
      *
      * @return Grupos
