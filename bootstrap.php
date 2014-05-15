@@ -1,6 +1,5 @@
 <?php
-// bootstrap.php
-// Include Composer Autoload (relative to project root).
+
 require_once "vendor/autoload.php";
 
 set_include_path(__DIR__ ."/entity-files" . PATH_SEPARATOR . get_include_path());
@@ -27,6 +26,9 @@ $config->setMetadataDriverImpl($driverImpl);
 $config->setProxyDir(__DIR__ .'/entity-files/proxies');
 $config->setProxyNamespace('Proxies');
 $config->setAutoGenerateProxyClasses(true);
+
+\Doctrine\DBAL\Types\Type::addType('datemesref', '\Types\DateMesRef');
+\Doctrine\DBAL\Types\Type::addType('money', '\Types\Money');
 
 $entityManager = EntityManager::create($dbParams, $config);
 EM::$instance = $entityManager;
