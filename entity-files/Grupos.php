@@ -26,6 +26,12 @@ class Grupos extends AbstractModel
     protected $datcad;
 
     /**
+     * Data de referencia
+     * @Column(type="datemesref")
+     */
+    protected $mesref;
+
+    /**
      * @Column(type="string", length=100, nullable=true)
      */
     protected $descricao;
@@ -86,6 +92,22 @@ class Grupos extends AbstractModel
     public function getDatcad()
     {
         return $this->datcad;
+    }
+
+    /**
+     * @param DateTime $mesref
+     */
+    public function setMesref($mesref)
+    {
+        $this->mesref = $mesref;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getMesref()
+    {
+        return $this->mesref;
     }
 
     /**
